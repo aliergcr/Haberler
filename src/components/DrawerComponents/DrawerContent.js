@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Image, StyleSheet } from 'react-native';
-import {DrawerItems} from 'react-navigation-drawer'
+import {DrawerNavigatorItems} from 'react-navigation-drawer'
 import { Container, Header, Content, Body, Right, Title, Button, Icon } from 'native-base';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class DrawerContent extends Component {
     render() {
         return (
             <Container >
-                <Header style={{height: 200}}>
+                <Header style={{height: 200, backgroundColor: 'white'}}>
                     <Body >
                         <Image
                             style={styles.drawerImage}
@@ -17,7 +16,7 @@ export default class DrawerContent extends Component {
                     </Body>
                 </Header>
                 <Content>
-                    <DrawerItems {...this.props} />
+                    <DrawerNavigatorItems {...this.props} />
                 </Content>
             </Container>
         )

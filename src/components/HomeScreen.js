@@ -6,6 +6,11 @@ import HeaderComponent from './common/HeaderComponent'
 import Category from './Category'
 
 export default class HomeScreen extends Component {
+    static navigationOptions= {
+        drawerIcon: (
+            <Icon name='home'/>
+        )
+    }
   render() {
     return (
       <Container>

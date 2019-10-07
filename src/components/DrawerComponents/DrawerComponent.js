@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Dimensions } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 
