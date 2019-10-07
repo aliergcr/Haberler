@@ -7,6 +7,7 @@ import Category from './Category'
 
 export default class HomeScreen extends Component {
     static navigationOptions= {
+      title: 'Ana Sayfa',
         drawerIcon: (
             <Icon name='home'/>
         )
