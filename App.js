@@ -7,18 +7,17 @@
  */
 
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import DrawerComponent from './src/components/DrawerComponents/DrawerComponent'
 
-
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
-      <SafeAreaView>
-        <View>
-          <Text>Haberler</Text>
-        </View>
-      </SafeAreaView>
-    );
+      <DrawerComponent />
+    )
   }
 
 };
+
+
+export default App;
+
