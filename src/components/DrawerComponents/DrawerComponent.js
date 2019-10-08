@@ -12,7 +12,7 @@ const DrawerNavigator = createDrawerNavigator({
     
   },
   {
-    initialRouteName: Home,
+    initialRouteName: HomeDrawer,
     contentComponent: DrawerContent,
     drawerPosition: 'left',
     drawerOpenRoute: 'DrawerOpen',
@@ -21,7 +21,7 @@ const DrawerNavigator = createDrawerNavigator({
     
   })
   
-  const Home= createAppContainer(DrawerNavigator)
+  const HomeDrawer= createAppContainer(DrawerNavigator)
 
   export default class DrawerComponent extends Component {
     constructor(props) {
@@ -32,7 +32,7 @@ const DrawerNavigator = createDrawerNavigator({
   
     render() {
       return (
-        <Home/>
+        <HomeDrawer/>
       );
     }
   }

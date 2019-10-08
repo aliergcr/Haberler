@@ -6,7 +6,7 @@ const HeaderComponent = ({ navigation }) => {
         <Header >
             <Left>
                 <Button transparent onPress={() => navigation.openDrawer()}>
-                    <Icon name='home' />
+                    <Icon ios='ios-menu' android="md-menu" />
                 </Button>
             </Left>
             <Body>
