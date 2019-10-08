@@ -13,19 +13,27 @@ class NewsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      news: {}
+      news: {},
+      refreshing: true
     }
   }
-
- fetchData(){
+componentDidMount(){
+  this.fetchNews()
+}
+  fetchNews() {
     console.log('Yenilendi')
     fetch(url)
-    .then((response) => response.json())
-    .then(res => {this.setState({
-        news: res
-      })})
-      
-    
+      .then((response) => response.json())
+      .then(news => {
+        this.setState({
+          news:news,
+          refreshing: false
+        })
+      })
+      .catch(() => this.setState({ refreshing: false }))
+      console.log(this.state.news)
+
+
   }
 
 
@@ -54,19 +62,24 @@ class NewsList extends React.Component {
         </ListItem>
       </List>
     )
-    
+
   }
 
-  
+  handleRefresh() {
+    ()=>this.setState({refreshing: true});
+    () => this.fetchNews();
+    
+  }
   render() {
     console.log('render')
+    
     const { navigation } = this.props;
     return (
       <SafeAreaView>
         <NavigationEvents
           onWillFocus={() => {
-            this.fetchData()
-            
+            this.handleRefresh()
+
           }}
         />
         <HeaderComponent navigation={this.props.navigation} />
@@ -74,6 +87,8 @@ class NewsList extends React.Component {
           data={this.state.news.articles}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.title}
+          refreshing={this.state.refreshing}
+          onRefresh={this.handleRefresh}
         />
 
       </SafeAreaView>
