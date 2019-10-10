@@ -6,12 +6,20 @@ import HomeScreen from '../HomeScreen'
 import DrawerContent from './DrawerContent'
 import NewsList from '../NewsList'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import NewsView from '../NewsView'
 
 const DrawerNavigator = createDrawerNavigator({
     Home: { screen: HomeScreen },
     NewsList: {screen: NewsList},
     NewsView:  {screen: NewsView}    
+=======
+
+const DrawerNavigator = createDrawerNavigator({
+    Home: { screen: HomeScreen },
+    NewsList: {screen: NewsList}
+    
+>>>>>>> parent of 5950e25... WEBVİEW eklendi
 =======
 
 const DrawerNavigator = createDrawerNavigator({
