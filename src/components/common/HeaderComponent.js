@@ -1,13 +1,13 @@
 import React from 'react'
-import { Header, Left, Body, Right, Title } from 'native-base';
-import ButtonComponent from './ButtonComponent';
+import { Container, Card, Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 
-const HeaderComponent = ({navigation, name }) => {
-    
+const HeaderComponent = ({ navigation }) => {
     return (
         <Header >
             <Left>
-                <ButtonComponent transparent name={name} navigation= {navigation} />  
+                <Button transparent onPress={() => navigation.openDrawer()}>
+                    <Icon ios='ios-menu' android="md-menu" />
+                </Button>
             </Left>
             <Body>
                 <Title>Son Dakika</Title>

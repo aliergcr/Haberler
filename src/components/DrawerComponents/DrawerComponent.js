@@ -5,12 +5,12 @@ import { createAppContainer } from 'react-navigation';
 import HomeScreen from '../HomeScreen'
 import DrawerContent from './DrawerContent'
 import NewsList from '../NewsList'
-import NewsView from '../NewsView'
+import NewsWebView from '../NewsWebView'
 
 const DrawerNavigator = createDrawerNavigator({
     Home: { screen: HomeScreen },
     NewsList: {screen: NewsList},
-    NewsView:  {screen: NewsView}    
+    NewsWebView:  {screen: NewsWebView}    
   },
   {
     initialRouteName: HomeDrawer,
