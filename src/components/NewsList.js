@@ -56,11 +56,7 @@ componentDidMount(){
           </Body>
           <Right>
 <<<<<<< HEAD
-<<<<<<< HEAD
             <Button transparent onPress={() => navigation.navigate('NewsView', { url: item.url })}>
-=======
-            <Button transparent onPress={() => navigation.navigate('NewsWebView', { item: item })}>
->>>>>>> parent of 5950e25... WEBVİEW eklendi
 =======
             <Button transparent onPress={() => navigation.navigate('NewsWebView', { item: item })}>
 >>>>>>> parent of 5950e25... WEBVİEW eklendi
