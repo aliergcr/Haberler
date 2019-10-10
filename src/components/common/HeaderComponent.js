@@ -1,16 +1,22 @@
 import React from 'react'
-import { Header, Left, Body, Right, Title } from 'native-base';
-import ButtonComponent from './ButtonComponent';
+import { Container, Card, Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 
-const HeaderComponent = ({navigation, name }) => {
-    
+const HeaderComponent = ({ navigation, name, title }) => {
     return (
         <Header >
             <Left>
-                <ButtonComponent transparent name={name} navigation= {navigation} />  
+                <Button transparent onPress={() => {
+                    if(name==='menu'){
+                        navigation.openDrawer()
+                    }else if(name==='arrow-back'){
+                        navigation.goBack()
+                    }
+                }}>
+                    <Icon name={name} />
+                </Button>
             </Left>
             <Body>
-                <Title>Son Dakika</Title>
+                <Title>{title}</Title>
             </Body>
             <Right />
         </Header>
