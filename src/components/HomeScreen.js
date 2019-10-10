@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Container, Card, Header, Left, Body, Right, Title, Button, Icon, Content } from 'native-base';
+import { Container, Icon } from 'native-base';
 
 import HeaderComponent from './common/HeaderComponent'
 import Category from './Category'
@@ -15,7 +14,7 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <Container>
-          <HeaderComponent navigation={this.props.navigation} />
+          <HeaderComponent navigation={this.props.navigation} name='menu' />
         <Category />
       </Container>
     )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, FlatList, View, } from 'react-native';
 import { NavigationEvents } from "react-navigation";
 import { List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
@@ -57,7 +57,7 @@ componentDidMount(){
             </View>
           </Body>
           <Right>
-            <Button transparent onPress={() => navigation.navigate('NewsWebView', { url: item.url })}>
+            <Button transparent onPress={() => navigation.navigate('NewsView', { url: item.url })}>
               <Text>View</Text>
             </Button>
           </Right>
@@ -87,7 +87,7 @@ componentDidMount(){
             this.fetchNews()
           }}
         />
-        <HeaderComponent navigation={this.props.navigation} />
+        <HeaderComponent navigation={this.props.navigation} name='menu' />
         <FlatList
           data={this.state.news.articles}
           renderItem={this.renderItem}
