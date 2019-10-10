@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, FlatList, View, } from 'react-native';
+import React from 'react';
+import { SafeAreaView, FlatList, View, ActivityIndicator } from 'react-native';
 import { NavigationEvents } from "react-navigation";
 import { List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 import HeaderComponent from '../components/common/HeaderComponent'
@@ -17,9 +17,9 @@ class NewsList extends React.Component {
       refreshing: true
     }
   }
-componentDidMount(){
-  this.fetchNews()
-}
+  componentDidMount() {
+    this.fetchNews()
+  }
 
   fetchNews() {
     //console.log('Yenilendi')
@@ -27,12 +27,12 @@ componentDidMount(){
       .then((response) => response.json())
       .then(news => {
         this.setState({
-          news:news,
+          news: news,
           refreshing: false
         })
       })
       .catch(() => this.setState({ refreshing: false }))
-      //console.log(this.state.news)
+    //console.log(this.state.news)
 
 
   }
@@ -41,7 +41,7 @@ componentDidMount(){
   renderItem = ({ item }) => {
     const { navigation } = this.props;
 
-   //console.log('renderItem');
+    //console.log('renderItem');
     return (
       <List>
         <ListItem thumbnail>
@@ -68,36 +68,53 @@ componentDidMount(){
 
   handleRefresh() {
     //console.log('handleRefresh');
-    
-      this.setState({refreshing: true,
-      });
-      this.fetchNews()
-    
-    
+
+    this.setState({
+      refreshing: true,
+    });
+    this.fetchNews()
+
+
     //()=>this.forceUpdate()
   }
 
-  render() {
-    //console.log('render')
-    return (
-      <SafeAreaView>
-        <NavigationEvents
-          onDidFocus={() => {
-            this.forceUpdate()
-            this.fetchNews()
-          }}
-        />
-        <HeaderComponent name='menu' title='Gündem' navigation={this.props.navigation} />
+  isLoading() {
+    if (this.state.refreshing) {
+      return (
+        <View style={{
+          width: '100%',
+          height: '100%',
+          justifyContent: 'center'
+        }}><ActivityIndicator size="large" color= '#000' /></View>
+      )
+    } else {
+      return (
         <FlatList
           data={this.state.news.articles}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.title}
           refreshing={this.state.refreshing}
-          onRefresh={()=>this.handleRefresh()}
+          onRefresh={() => this.handleRefresh()}
         />
-      </SafeAreaView>
-    );
+      )
+    }
   }
-};
+    render() {
+      //console.log('render')
 
-export default NewsList;
+      return (
+        <SafeAreaView>
+          <NavigationEvents
+            onDidFocus={() => {
+              this.forceUpdate()
+              this.fetchNews()
+            }}
+          />
+          <HeaderComponent name='menu' title='Gündem' navigation={this.props.navigation} />
+          {this.isLoading()}
+        </SafeAreaView>
+      );
+    }
+  };
+
+  export default NewsList;

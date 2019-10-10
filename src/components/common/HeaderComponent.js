@@ -9,7 +9,7 @@ const HeaderComponent = ({ navigation, name, title }) => {
                     if(name==='menu'){
                         navigation.openDrawer()
                     }else if(name==='arrow-back'){
-                        navigation.goBack()
+                        navigation.navigate('NewsList')
                     }
                 }}>
                     <Icon name={name} />
