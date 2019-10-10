@@ -24,13 +24,7 @@ const DrawerNavigator = createDrawerNavigator({
   
   const HomeDrawer= createAppContainer(DrawerNavigator)
 
-  export default class DrawerComponent extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-      };
-    }
-  
+  export default class DrawerComponent extends Component { 
     render() {
       return (
         <HomeDrawer/>

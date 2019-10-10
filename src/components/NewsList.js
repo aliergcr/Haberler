@@ -87,7 +87,7 @@ componentDidMount(){
             this.fetchNews()
           }}
         />
-        <HeaderComponent navigation={this.props.navigation} />
+        <HeaderComponent name='menu' title='Gündem' navigation={this.props.navigation} />
         <FlatList
           data={this.state.news.articles}
           renderItem={this.renderItem}

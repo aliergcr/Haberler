@@ -15,7 +15,7 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <Container>
-          <HeaderComponent navigation={this.props.navigation} />
+          <HeaderComponent name='menu' title='Haberler' navigation={this.props.navigation} />
         <Category />
       </Container>
     )
