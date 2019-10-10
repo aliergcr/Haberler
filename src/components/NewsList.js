@@ -20,8 +20,9 @@ class NewsList extends React.Component {
 componentDidMount(){
   this.fetchNews()
 }
+
   fetchNews() {
-    console.log('Yenilendi')
+    //console.log('Yenilendi')
     fetch(url)
       .then((response) => response.json())
       .then(news => {
@@ -31,16 +32,17 @@ componentDidMount(){
         })
       })
       .catch(() => this.setState({ refreshing: false }))
-      console.log(this.state.news)
+      //console.log(this.state.news)
 
 
   }
 
 
   renderItem = ({ item }) => {
-    console.log('renderItem')
-    return (
+    const { navigation } = this.props;
 
+   //console.log('renderItem');
+    return (
       <List>
         <ListItem thumbnail>
           <Left>
@@ -55,31 +57,34 @@ componentDidMount(){
             </View>
           </Body>
           <Right>
-            <Button transparent onPress={() => navigation.navigate('NewsWebView', { item: item })}>
+            <Button transparent onPress={() => navigation.navigate('NewsWebView', { url: item.url })}>
               <Text>View</Text>
             </Button>
           </Right>
         </ListItem>
       </List>
     )
-
   }
 
   handleRefresh() {
-    ()=>this.setState({refreshing: true});
-    () => this.fetchNews();
+    //console.log('handleRefresh');
     
+      this.setState({refreshing: true,
+      });
+      this.fetchNews()
+    
+    
+    //()=>this.forceUpdate()
   }
+
   render() {
-    console.log('render')
-    
-    const { navigation } = this.props;
+    //console.log('render')
     return (
       <SafeAreaView>
         <NavigationEvents
-          onWillFocus={() => {
-            this.handleRefresh()
-
+          onDidFocus={() => {
+            this.forceUpdate()
+            this.fetchNews()
           }}
         />
         <HeaderComponent navigation={this.props.navigation} />
@@ -88,15 +93,11 @@ componentDidMount(){
           renderItem={this.renderItem}
           keyExtractor={(item) => item.title}
           refreshing={this.state.refreshing}
-          onRefresh={this.handleRefresh}
+          onRefresh={()=>this.handleRefresh()}
         />
-
       </SafeAreaView>
     );
   }
-
 };
-
-
 
 export default NewsList;
