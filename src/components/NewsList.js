@@ -84,8 +84,8 @@ class NewsList extends React.Component {
         <View style={{
           width: '100%',
           height: '100%',
-          justifyContent: 'center'
-        }}><ActivityIndicator size="large" color= '#000' /></View>
+          marginTop:20
+        }}><ActivityIndicator size="large" color= '#5edfff' /></View>
       )
     } else {
       return (

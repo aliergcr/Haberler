@@ -2,22 +2,7 @@
    "Son Dakika":[
       { 
          "title":"John",
-         "url":"Doe" 
-         "description":"Doe" 
-         "pubDate":"Doe" 
-         "thumbnail":"Doe" 
-      },
-      {
-         "title":"John",
-         "url":"Doe" 
-         "description":"Doe" 
-         "pubDate":"Doe" 
-         "thumbnail":"Doe" 
-      },
-      {
-        "title":"John",
-         "url":"Doe" 
-         "description":"Doe" 
+         "url":"Doe"  
          "pubDate":"Doe" 
          "thumbnail":"Doe" 
       }
