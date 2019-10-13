@@ -3,9 +3,10 @@ import { Image, StyleSheet } from 'react-native';
 import {DrawerNavigatorItems} from 'react-navigation-drawer'
 import { Container, Header, Content, Body, Right, Title, Button, Icon } from 'native-base';
 
-import Category from '../Category'
+import Category from '../../Category'
 
 export default class DrawerContent extends Component {
+    
     render() {
         return (
             <Container >
@@ -13,14 +14,12 @@ export default class DrawerContent extends Component {
                     <Body >
                         <Image
                             style={styles.drawerImage}
-                            source={require('../../../assets/DrawerIcons/logo.png')}
+                            source={require('../../../../assets/DrawerIcons/logo.png')}
                         />
                     </Body>
                 </Header>
                 <Content>
                     <DrawerNavigatorItems {...this.props} />
-                    <Category />
-
                 </Content>
             </Container>
         )

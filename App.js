@@ -1,23 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
-import DrawerComponent from './src/components/DrawerComponents/DrawerComponent'
+import {HomeDrawer} from './src/components/navigation/Navigators'
 
 class App extends Component {
   render() {
     return (
-      <DrawerComponent />
+      <HomeDrawer />
     )
   }
-
 };
-
 
 export default App;
 

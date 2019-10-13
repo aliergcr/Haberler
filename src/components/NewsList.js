@@ -1,13 +1,9 @@
 import React from 'react';
-import { SafeAreaView, FlatList, View, ActivityIndicator } from 'react-native';
+import { SafeAreaView, FlatList, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { NavigationEvents } from "react-navigation";
-import { List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
-import HeaderComponent from '../components/common/HeaderComponent'
+import * as rssParser from 'react-native-rss-parser';
 
-const category = 'general';
-const country = 'tr';
-const API_KEY = 'bcad8306d2a54c0cac8a5767463bf976';
-const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${API_KEY}`;
+import ListItems from '../components/ListItems'
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -17,65 +13,36 @@ class NewsList extends React.Component {
       refreshing: true
     }
   }
+  
   componentDidMount() {
     this.fetchNews()
   }
 
   fetchNews() {
-    //console.log('Yenilendi')
-    fetch(url)
-      .then((response) => response.json())
-      .then(news => {
+    const {link}= this.props
+    fetch(link)
+      .then((response) => response.text())
+      .then((responseData) => rssParser.parse(responseData))
+      .then((rss) => {
         this.setState({
-          news: news,
+          news: rss,
           refreshing: false
         })
-      })
-      .catch(() => this.setState({ refreshing: false }))
-    //console.log(this.state.news)
-
-
+      });
   }
-
 
   renderItem = ({ item }) => {
     const { navigation } = this.props;
-
-    //console.log('renderItem');
     return (
-      <List>
-        <ListItem thumbnail>
-          <Left>
-            <Thumbnail square source={{ uri: item.urlToImage }} />
-          </Left>
-          <Body>
-            <Text numberOfLines={2}>{item.title}</Text>
-            <Text note numberOfLines={2}>{item.description}</Text>
-            <View style={{ flexDirection: 'row', }}>
-              <Text note >{item.source.name}</Text>
-              <Text note >{item.publishedAt}</Text>
-            </View>
-          </Body>
-          <Right>
-            <Button transparent onPress={() => navigation.navigate('NewsWebView', { url: item.url })}>
-              <Text>View</Text>
-            </Button>
-          </Right>
-        </ListItem>
-      </List>
+      <ListItems navigation={navigation} item={item} />
     )
   }
 
   handleRefresh() {
-    //console.log('handleRefresh');
-
     this.setState({
       refreshing: true,
     });
     this.fetchNews()
-
-
-    //()=>this.forceUpdate()
   }
 
   isLoading() {
@@ -84,13 +51,13 @@ class NewsList extends React.Component {
         <View style={{
           width: '100%',
           height: '100%',
-          marginTop:20
-        }}><ActivityIndicator size="large" color= '#5edfff' /></View>
+          marginTop: 20
+        }}><ActivityIndicator size="large" color='#5edfff' /></View>
       )
     } else {
       return (
         <FlatList
-          data={this.state.news.articles}
+          data={this.state.news.items}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.title}
           refreshing={this.state.refreshing}
@@ -99,22 +66,20 @@ class NewsList extends React.Component {
       )
     }
   }
-    render() {
-      //console.log('render')
 
-      return (
-        <SafeAreaView>
-          <NavigationEvents
-            onDidFocus={() => {
-              this.forceUpdate()
-              this.fetchNews()
-            }}
-          />
-          <HeaderComponent name='menu' title='Gündem' navigation={this.props.navigation} />
-          {this.isLoading()}
-        </SafeAreaView>
-      );
-    }
-  };
+  render() {
+    return (
+      <SafeAreaView>
+        <NavigationEvents
+          onDidFocus={() => {
+            this.forceUpdate()
+            this.fetchNews()
+          }}
+        />
+        {this.isLoading()}
+      </SafeAreaView>
+    );
+  }
+};
 
-  export default NewsList;
+export default NewsList;
