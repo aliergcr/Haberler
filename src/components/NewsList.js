@@ -10,16 +10,30 @@ class NewsList extends React.Component {
     super(props);
     this.state = {
       news: {},
-      refreshing: true
+      refreshing: true,
+
     }
   }
-  
+
   componentDidMount() {
     this.fetchNews()
+    this.NtvNews()
   }
 
+  NtvNews() {
+
+    var convert = require('xml-js');
+    var xml ='https://www.cnnturk.com/feed/rss/all/news'
+      
+    var result1 = convert.xml2json(xml, { compact: true, spaces: 4 });
+    console.log(result1);
+
+  };
+
+
+
   fetchNews() {
-    const {link}= this.props
+    const { link } = this.props
     fetch(link)
       .then((response) => response.text())
       .then((responseData) => rssParser.parse(responseData))
