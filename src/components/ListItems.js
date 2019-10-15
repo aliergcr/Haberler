@@ -8,17 +8,17 @@ const ListItems = ({item, navigation}) => {
         <List>
         <ListItem thumbnail>
           <Left>
-            <Thumbnail square source={{ uri: item.enclosures[0].url }} />
+            <Thumbnail square source={{ uri: item.thumbnail }} />
           </Left>
           <Body>
-            <Text numberOfLines={2}>{item.title}</Text>
+            <Text numberOfLines={4}>{item.title}</Text>
             <View style={{ flexDirection: 'row', }}>
-              <Text note >Habertürk</Text>
-              <Text note >{item.published}</Text>
+              <Text note >{item.author}</Text>
+              <Text note >{item.pubDate}</Text>
             </View>
           </Body>
           <Right>
-            <Button transparent onPress={() => navigation.navigate('NewsWebView', { url: item.links[0].url })}>
+            <Button transparent onPress={() => navigation.navigate('NewsWebView', { url: item.url })}>
               <Text>View</Text>
             </Button>
           </Right>

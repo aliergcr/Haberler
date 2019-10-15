@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "buffer": "^5.4.3",
     "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-native": "0.61.2",
@@ -20,7 +21,8 @@
     "react-navigation": "^4.0.10",
     "react-navigation-drawer": "^2.2.2",
     "react-navigation-stack": "^1.9.4",
-    "xml-js": "^1.6.11"
+    "stream": "0.0.2",
+    "util": "^0.12.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

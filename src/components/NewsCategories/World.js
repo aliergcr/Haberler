@@ -22,7 +22,7 @@ export default class World extends Component {
       }    
   render() {
     return (
-        <NewsList category= 'TopHeadlines' navigation={this.props.navigation} link='https://www.haberturk.com/rss/kategori/dunya.xml' />
+        <NewsList category= 'Dünya' navigation={this.props.navigation} />
     );
   }
 }

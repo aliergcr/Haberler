@@ -10,6 +10,9 @@ import TopHeadlines from '../NewsCategories/TopHeadlines'
 import Technology from '../NewsCategories/Technology'
 import Magazine from '../NewsCategories/Magazine'
 import Sports from '../NewsCategories/Sports'
+import Cars from '../NewsCategories/Cars'
+import Health from '../NewsCategories/Health'
+import Art from '../NewsCategories/Art'
 
 
 export const WorldStackNavigator = createStackNavigator(
@@ -62,11 +65,41 @@ export const MagazineStackNavigator = createStackNavigator(
     }
 )
 
+export const ArtStackNavigator = createStackNavigator(
+    {
+        Art: {screen: Art},
+        NewsWebView: { screen: NewsWebView }
+    },
+    {
+        initialRouteName: 'Art',
+    }
+)
+
+export const CarsStackNavigator = createStackNavigator(
+    {
+        Cars: {screen: Cars},
+        NewsWebView: { screen: NewsWebView }
+    },
+    {
+        initialRouteName: 'Cars',
+    }
+)
+
+export const HealthStackNavigator = createStackNavigator(
+    {
+        Health: {screen: Health},
+        NewsWebView: { screen: NewsWebView }
+    },
+    {
+        initialRouteName: 'Health',
+    }
+)
+
 export const DrawerNavigator = createDrawerNavigator({
     Home: {
         screen: TopHeadlinesStackNavigator,
         navigationOptions: {
-                drawerLabel: 'Son Dakikaaa'
+                drawerLabel: 'Son Dakika'
         }
     },
     World: {
@@ -91,6 +124,24 @@ export const DrawerNavigator = createDrawerNavigator({
         screen: MagazineStackNavigator,
         navigationOptions: {
                 drawerLabel: 'Magazin'
+        }
+    },
+    Art: {
+        screen: ArtStackNavigator,
+        navigationOptions: {
+                drawerLabel: 'Kültür-Sanat'
+        }
+    },
+    Cars: {
+        screen: CarsStackNavigator,
+        navigationOptions: {
+                drawerLabel: 'Otomobil'
+        }
+    },
+    Health: {
+        screen: HealthStackNavigator,
+        navigationOptions: {
+                drawerLabel: 'Sağlık'
         }
     },
     

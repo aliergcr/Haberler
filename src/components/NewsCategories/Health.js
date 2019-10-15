@@ -4,7 +4,7 @@ import { Icon } from 'native-base';
 
 import NewsList from '../NewsList'
 
-export default class World extends Component {
+export default class Health extends Component {
     static navigationOptions= ({navigation})=>{
    
         return{
@@ -13,7 +13,7 @@ export default class World extends Component {
               <Icon style={{color: '#fcf9ec'}}   name='menu' />
             </TouchableOpacity>
           ),
-          title: 'Spor Haberleri',
+          title: 'Sağlık Haberleri',
           headerStyle: {
             backgroundColor: '#801336',
           },
@@ -22,7 +22,7 @@ export default class World extends Component {
       }    
   render() {
     return (
-        <NewsList category= 'Spor' navigation={this.props.navigation} />
+        <NewsList category= 'Sağlık' navigation={this.props.navigation}  />
     );
   }
 }

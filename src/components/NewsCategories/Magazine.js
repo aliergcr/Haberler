@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 
 import NewsList from '../NewsList'
@@ -22,7 +22,7 @@ export default class World extends Component {
       }    
   render() {
     return (
-        <NewsList category= 'Magazine' navigation={this.props.navigation} link='https://www.haberturk.com/rss/spor.xml' />
+        <NewsList category= 'Magazin' navigation={this.props.navigation}  />
     );
   }
 }
