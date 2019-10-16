@@ -178,17 +178,18 @@ class NewsList extends React.Component {
     this.fetchNews();
   }
 
-  async fetchNews() {
-     this.state.links.map(async (data) => {
+  fetchNews() {
+    
+     this.state.links.map((data) => {
        
       if (this.props.category === data.category ) {
         //console.log(data)
-        await fetch(data.link)
-          .then(async (response) => response.text())
-          .then(async(responseData) => rssParser.parse(responseData))
-          .then(async(rss) => {
+         fetch(data.link)
+          .then((response) => response.text())
+          .then((responseData) => rssParser.parse(responseData))
+          .then((rss) => {
             //console.log(rss.items)
-            rss.items.map(async(item, index) => {
+            rss.items.map((item, index) => {
             //console.log(item)
               if (index< 10) {
                 //console.log(index)
