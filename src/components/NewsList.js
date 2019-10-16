@@ -2,6 +2,8 @@ import React from 'react';
 import { SafeAreaView, StatusBar, FlatList, View, ActivityIndicator } from 'react-native';
 import { NavigationEvents } from "react-navigation";
 import * as rssParser from 'react-native-rss-parser';
+import moment from 'moment';
+import 'moment/locale/tr';
 
 import ListItems from '../components/ListItems'
 
@@ -77,11 +79,6 @@ class NewsList extends React.Component {
           "author": "TRT"
         },
         {
-          "link": "http://www.trt.net.tr/rss/kultursanat.rss",
-          "category": "Kültür-Sanat",
-          "author": "TRT"
-        },
-        {
           "link": "http://www.trt.net.tr/rss/saglik.rss",
           "category": "Sağlık",
           "author": "TRT"
@@ -122,51 +119,6 @@ class NewsList extends React.Component {
           "author": "Hürriyet"
         },
         {
-          "link": "http://www.cumhuriyet.com.tr/rss/son_dakika.xml",
-          "category": "Son Dakika",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/11.xml",
-          "category": "Teknoloji",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/5.xml",
-          "category": "Dünya",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/6.xml",
-          "category": "Ekonomi",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/17.xml",
-          "category": "Otomobil",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/7.xml",
-          "category": "Kültür-Sanat",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/12.xml",
-          "category": "Sağlık",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/9.xml",
-          "category": "Spor",
-          "author": "Cumhuriyet"
-        },
-        {
-          "link": "http://www.cumhuriyet.com.tr/rss/2.xml",
-          "category": "Yazarlar",
-          "author": "Cumhuriyet"
-        },
-        {
           "link": "https://tr.sputniknews.com/export/rss2/archive/index.xml",
           "category": "Son Dakika",
           "author": "Sputnik Türkiye"
@@ -180,6 +132,41 @@ class NewsList extends React.Component {
           "link": "https://www.donanimhaber.com/rss/tum/",
           "category": "Teknoloji",
           "author": "Donanım Haber"
+        },
+        {
+          "link": "https://t24.com.tr/rss/haber/gundem",
+          "category": "Son Dakika",
+          "author": "T24"
+        },
+        {
+          "link": "https://t24.com.tr/rss/haber/dunya",
+          "category": "Dünya",
+          "author": "T24"
+        },
+        {
+          "link": "https://t24.com.tr/rss/haber/ekonomi",
+          "category": "Ekonomi",
+          "author": "T24"
+        },
+        {
+          "link": "https://t24.com.tr/rss/haber/kultur-sanat",
+          "category": "Kültür-Sanat",
+          "author": "T24"
+        },
+        {
+          "link": "https://t24.com.tr/rss/haber/bilim-teknoloji",
+          "category": "Teknoloji",
+          "author": "T24"
+        },
+        {
+          "link": "https://t24.com.tr/rss/haber/saglik",
+          "category": "Sağlık",
+          "author": "T24"
+        },
+        {
+          "link": "https://t24.com.tr/rss/yazarlar",
+          "category": "Yazarlar",
+          "author": "T24"
         }
       ],
       refreshing: true,
@@ -187,25 +174,28 @@ class NewsList extends React.Component {
   }
 
   componentDidMount() {
+    
     this.fetchNews();
   }
 
- async fetchNews() {
-
-     this.state.links.map((data) => {
-      if (data.category === this.props.category) {
-         fetch(data.link)
-          .then((response) => response.text())
-          .then((responseData) => rssParser.parse(responseData))
-          .then((rss) => {
-            let index = 0;
-            rss.items.map((item) => {
-              if (index !== 10) {
-                index += 1;
+  async fetchNews() {
+     this.state.links.map(async (data) => {
+       
+      if (this.props.category === data.category ) {
+        //console.log(data)
+        await fetch(data.link)
+          .then(async (response) => response.text())
+          .then(async(responseData) => rssParser.parse(responseData))
+          .then(async(rss) => {
+            //console.log(rss.items)
+            rss.items.map(async(item, index) => {
+            //console.log(item)
+              if (index< 10) {
+                //console.log(index)
                 let state_data = {
                   "title": item.title,
                   "url": item.links[0].url,
-                  "pubDate": item.published,
+                  "pubDate": moment(item.published || moment.now()).fromNow(),
                   "thumbnail": item.enclosures[0].url,
                   "author": data.author,
                   "category": data.category
@@ -213,17 +203,15 @@ class NewsList extends React.Component {
                 this.setState({
                   news: [...this.state.news, state_data]
                 })
-                this.setState({
-                  refreshing: false,
-                });
-              } else {
-                return;
-              }
-
-            });
-          })
-      }
-    })
+                console.log(this.state.news)
+              }//if
+            })//rss.ite.map
+          })//then rss   
+      }//if
+    })//state.links.map
+    this.setState({
+      refreshing: false,
+    });
   }
 
   renderItem = ({ item }) => {
@@ -235,7 +223,9 @@ class NewsList extends React.Component {
 
   handleRefresh() {
     this.setState({
+      news:[],
       refreshing: true,
+
     });
     this.fetchNews()
   }
@@ -250,9 +240,10 @@ class NewsList extends React.Component {
         }}><ActivityIndicator size="large" color='#5edfff' /></View>
       )
     } else {
-      return (
+      //console.log(this.state.news)
+      return (        
         <FlatList
-          data={this.state.news}
+          data={this.state.news.sort((a,b) => (a.pubDate > b.pubDate) ? 1 : ((b.pubDate > a.pubDate) ? -1 : 0))}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.url}
           refreshing={this.state.refreshing}
