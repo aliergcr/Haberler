@@ -14,7 +14,6 @@ import Cars from '../NewsCategories/Cars'
 import Health from '../NewsCategories/Health'
 import Art from '../NewsCategories/Art'
 
-
 export const WorldStackNavigator = createStackNavigator(
     {
         World: {screen: World},
@@ -95,6 +94,8 @@ export const HealthStackNavigator = createStackNavigator(
     }
 )
 
+
+
 export const DrawerNavigator = createDrawerNavigator({
     Home: {
         screen: TopHeadlinesStackNavigator,
@@ -143,13 +144,13 @@ export const DrawerNavigator = createDrawerNavigator({
         navigationOptions: {
                 drawerLabel: 'Sağlık'
         }
-    },
-    
+    }
 },
     {
         initialRouteName: 'Home',
         contentComponent: DrawerContent,
         drawerPosition: 'left',
+        drawerWidth: '60%',
         drawerOpenRoute: 'DrawerOpen',
         drawerCloseRoute: 'DrawerClose',
         drawerToggleRoute: 'DrawerToggle'

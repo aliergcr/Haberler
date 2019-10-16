@@ -147,21 +147,6 @@ const links = [
     "link": "https://www.haberturk.com/rss/kategori/otomobil.xml",
     "category": "Otomobil",
     "author": "Habertürk"
-  },
-  {
-    "link": "https://www.haberturk.com/rss/kategori/yazarlar.xml",
-    "category": "Yazarlar",
-    "author": "Habertürk"
-  },
-  {
-    "link": "http://www.hurriyet.com.tr/rss/yazarlar",
-    "category": "Yazarlar",
-    "author": "Hürriyet"
-  },
-  {
-    "link": "https://t24.com.tr/rss/yazarlar",
-    "category": "Yazarlar",
-    "author": "T24"
   }
 ]
 
@@ -173,11 +158,9 @@ class NewsList extends React.Component {
     }
   }
 
-
   selectCategory() {
     data_news = [];
     const link_list = links.filter((item) => (item.category == this.props.category))
-    //console.log("Link_list-----------",link_list)
     this.fetchNews(link_list)
   }
 
@@ -185,13 +168,9 @@ class NewsList extends React.Component {
     link_list.map((data) => {
       this.fetchData(data)
     })
-    //this.setState({ refreshing: false });
-    //console.log("fetchNews")
-
   }
 
   fetchData(data) {
-
     fetch(data.link)
       .then((response) => response.text())
       .then((responseData) => rssParser.parse(responseData))
@@ -199,8 +178,6 @@ class NewsList extends React.Component {
         this.setNewsToState(rss, data)
       })
       .catch((err) => console.log('err------------->', err))
-    // console.log("fetchData")
-
   }
 
   setNewsToState(rss, data) {
@@ -215,15 +192,12 @@ class NewsList extends React.Component {
           "category": data.category
         }
         data_news = [...data_news, state_data]
-        console.log("write data", data_news)
       }
     })
-    console.log("setNewsToState")
     this.setState({ refreshing: false });
 
   }
   renderItem = ({ item }) => {
-    //console.log(data_news)
     const { navigation } = this.props;
     return (
       <ListItems navigation={navigation} item={item} />
@@ -247,7 +221,6 @@ class NewsList extends React.Component {
         }}><ActivityIndicator size="large" color='#5edfff' /></View>
       )
     } else {
-      //console.log(this.state.news)
       return (
         <FlatList
           data={data_news}
