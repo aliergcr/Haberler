@@ -243,7 +243,7 @@ class NewsList extends React.Component {
       //console.log(this.state.news)
       return (        
         <FlatList
-          data={this.state.news.sort((a,b) => (a.pubDate > b.pubDate) ? 1 : ((b.pubDate > a.pubDate) ? -1 : 0))}
+          data={this.state.news}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.url}
           refreshing={this.state.refreshing}
