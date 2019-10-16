@@ -6,216 +6,224 @@ import moment from 'moment';
 import 'moment/locale/tr';
 
 import ListItems from '../components/ListItems'
+let data_news = [];
+const links = [
+  {
+    "link": "http://www.trt.net.tr/rss/gundem.rss",
+    "category": "Son Dakika",
+    "author": "TRT"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/manset.xml",
+    "category": "Son Dakika",
+    "author": "Habertürk"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/gundem",
+    "category": "Son Dakika",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "https://tr.sputniknews.com/export/rss2/archive/index.xml",
+    "category": "Son Dakika",
+    "author": "Sputnik Türkiye"
+  },
+  {
+    "link": "https://t24.com.tr/rss/haber/gundem",
+    "category": "Son Dakika",
+    "author": "T24"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/ekonomi.xml",
+    "category": "Ekonomi",
+    "author": "Habertürk"
+  },
+  {
+    "link": "http://www.trt.net.tr/rss/ekonomi.rss",
+    "category": "Ekonomi",
+    "author": "TRT"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/ekonomi",
+    "category": "Ekonomi",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "https://t24.com.tr/rss/haber/ekonomi",
+    "category": "Ekonomi",
+    "author": "T24"
+  },
+  {
+    "link": "http://www.trt.net.tr/rss/dunya.rss",
+    "category": "Dünya",
+    "author": "TRT"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/kategori/dunya.xml",
+    "category": "Dünya",
+    "author": "Habertürk"
+  },
+  {
+    "link": "https://t24.com.tr/rss/haber/dunya",
+    "category": "Dünya",
+    "author": "T24"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/spor.xml",
+    "category": "Spor",
+    "author": "Habertürk"
+  },
+  {
+    "link": "http://www.trt.net.tr/rss/spor.rss",
+    "category": "Spor",
+    "author": "TRT"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/spor",
+    "category": "Spor",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "https://www.fotomac.com.tr/rss/anasayfa.xml",
+    "category": "Spor",
+    "author": "Fotomaç"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/magazin.xml",
+    "category": "Magazin",
+    "author": "Habertürk"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/magazin",
+    "category": "Magazin",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/teknoloji",
+    "category": "Teknoloji",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "https://www.donanimhaber.com/rss/tum/",
+    "category": "Teknoloji",
+    "author": "Donanım Haber"
+  },
+  {
+    "link": "https://t24.com.tr/rss/haber/bilim-teknoloji",
+    "category": "Teknoloji",
+    "author": "T24"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/kategori/kultur-sanat.xml",
+    "category": "Kültür-Sanat",
+    "author": "Habertürk"
+  },
+  {
+    "link": "https://t24.com.tr/rss/haber/kultur-sanat",
+    "category": "Kültür-Sanat",
+    "author": "T24"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/kategori/saglik.xml",
+    "category": "Sağlık",
+    "author": "Habertürk"
+  },
+  {
+    "link": "http://www.trt.net.tr/rss/saglik.rss",
+    "category": "Sağlık",
+    "author": "TRT"
+  },
+  {
+    "link": "https://t24.com.tr/rss/haber/saglik",
+    "category": "Sağlık",
+    "author": "T24"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/saglik",
+    "category": "Sağlık",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/kategori/otomobil.xml",
+    "category": "Otomobil",
+    "author": "Habertürk"
+  },
+  {
+    "link": "https://www.haberturk.com/rss/kategori/yazarlar.xml",
+    "category": "Yazarlar",
+    "author": "Habertürk"
+  },
+  {
+    "link": "http://www.hurriyet.com.tr/rss/yazarlar",
+    "category": "Yazarlar",
+    "author": "Hürriyet"
+  },
+  {
+    "link": "https://t24.com.tr/rss/yazarlar",
+    "category": "Yazarlar",
+    "author": "T24"
+  }
+]
 
 class NewsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      news: [],
-      links: [
-        {
-          "link": "https://www.haberturk.com/rss/manset.xml",
-          "category": "Son Dakika",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/ekonomi.xml",
-          "category": "Ekonomi",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/spor.xml",
-          "category": "Spor",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/magazin.xml",
-          "category": "Magazin",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/kategori/saglik.xml",
-          "category": "Sağlık",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/kategori/kultur-sanat.xml",
-          "category": "Kültür-Sanat",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/kategori/otomobil.xml",
-          "category": "Otomobil",
-          "author": "Habertürk"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/kategori/yazarlar.xml",
-          "category": "Yazarlar",
-          "author": "Habertürk"
-        },
-        {
-          "link": "http://www.trt.net.tr/rss/gundem.rss",
-          "category": "Son Dakika",
-          "author": "TRT"
-        },
-        {
-          "link": "http://www.trt.net.tr/rss/dunya.rss",
-          "category": "Dünya",
-          "author": "TRT"
-        },
-        {
-          "link": "https://www.haberturk.com/rss/kategori/dunya.xml",
-          "category": "Dünya",
-          "author": "Habertürk"
-        },
-        {
-          "link": "http://www.trt.net.tr/rss/spor.rss",
-          "category": "Spor",
-          "author": "TRT"
-        },
-        {
-          "link": "http://www.trt.net.tr/rss/ekonomi.rss",
-          "category": "Ekonomi",
-          "author": "TRT"
-        },
-        {
-          "link": "http://www.trt.net.tr/rss/saglik.rss",
-          "category": "Sağlık",
-          "author": "TRT"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/gundem",
-          "category": "Son Dakika",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/ekonomi",
-          "category": "Ekonomi",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/magazin",
-          "category": "Magazin",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/spor",
-          "category": "Spor",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/teknoloji",
-          "category": "Teknoloji",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/saglik",
-          "category": "Sağlık",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "http://www.hurriyet.com.tr/rss/yazarlar",
-          "category": "Yazarlar",
-          "author": "Hürriyet"
-        },
-        {
-          "link": "https://tr.sputniknews.com/export/rss2/archive/index.xml",
-          "category": "Son Dakika",
-          "author": "Sputnik Türkiye"
-        },
-        {
-          "link": "https://www.fotomac.com.tr/rss/anasayfa.xml",
-          "category": "Spor",
-          "author": "Fotomaç"
-        },
-        {
-          "link": "https://www.donanimhaber.com/rss/tum/",
-          "category": "Teknoloji",
-          "author": "Donanım Haber"
-        },
-        {
-          "link": "https://t24.com.tr/rss/haber/gundem",
-          "category": "Son Dakika",
-          "author": "T24"
-        },
-        {
-          "link": "https://t24.com.tr/rss/haber/dunya",
-          "category": "Dünya",
-          "author": "T24"
-        },
-        {
-          "link": "https://t24.com.tr/rss/haber/ekonomi",
-          "category": "Ekonomi",
-          "author": "T24"
-        },
-        {
-          "link": "https://t24.com.tr/rss/haber/kultur-sanat",
-          "category": "Kültür-Sanat",
-          "author": "T24"
-        },
-        {
-          "link": "https://t24.com.tr/rss/haber/bilim-teknoloji",
-          "category": "Teknoloji",
-          "author": "T24"
-        },
-        {
-          "link": "https://t24.com.tr/rss/haber/saglik",
-          "category": "Sağlık",
-          "author": "T24"
-        },
-        {
-          "link": "https://t24.com.tr/rss/yazarlar",
-          "category": "Yazarlar",
-          "author": "T24"
-        }
-      ],
       refreshing: true,
     }
   }
 
-  componentDidMount() {
-    
-    this.fetchNews();
+
+  selectCategory() {
+    data_news = [];
+    const link_list = links.filter((item) => (item.category == this.props.category))
+    //console.log("Link_list-----------",link_list)
+    this.fetchNews(link_list)
   }
 
-  fetchNews() {
-    
-     this.state.links.map((data) => {
-       
-      if (this.props.category === data.category ) {
-        //console.log(data)
-         fetch(data.link)
-          .then((response) => response.text())
-          .then((responseData) => rssParser.parse(responseData))
-          .then((rss) => {
-            //console.log(rss.items)
-            rss.items.map((item, index) => {
-            //console.log(item)
-              if (index< 10) {
-                //console.log(index)
-                let state_data = {
-                  "title": item.title,
-                  "url": item.links[0].url,
-                  "pubDate": moment(item.published || moment.now()).fromNow(),
-                  "thumbnail": item.enclosures[0].url,
-                  "author": data.author,
-                  "category": data.category
-                }
-                this.setState({
-                  news: [...this.state.news, state_data]
-                })
-                console.log(this.state.news)
-              }//if
-            })//rss.ite.map
-          })//then rss   
-      }//if
-    })//state.links.map
-    this.setState({
-      refreshing: false,
-    });
+  async fetchNews(link_list) {
+    link_list.map((data) => {
+      this.fetchData(data)
+    })
+    //this.setState({ refreshing: false });
+    //console.log("fetchNews")
+
   }
 
+  fetchData(data) {
+
+    fetch(data.link)
+      .then((response) => response.text())
+      .then((responseData) => rssParser.parse(responseData))
+      .then(async (rss) => {
+        this.setNewsToState(rss, data)
+      })
+      .catch((err) => console.log('err------------->', err))
+    // console.log("fetchData")
+
+  }
+
+  setNewsToState(rss, data) {
+    rss.items.map((item, index) => {
+      if (index < 10) {
+        let state_data = {
+          "title": item.title,
+          "url": item.links[0].url,
+          "pubDate": moment(item.published || moment.now()).fromNow(),
+          "thumbnail": item.enclosures[0].url == undefined ? null : item.enclosures[0].url,
+          "author": data.author,
+          "category": data.category
+        }
+        data_news = [...data_news, state_data]
+        console.log("write data", data_news)
+      }
+    })
+    console.log("setNewsToState")
+    this.setState({ refreshing: false });
+
+  }
   renderItem = ({ item }) => {
+    //console.log(data_news)
     const { navigation } = this.props;
     return (
       <ListItems navigation={navigation} item={item} />
@@ -224,11 +232,9 @@ class NewsList extends React.Component {
 
   handleRefresh() {
     this.setState({
-      news:[],
       refreshing: true,
-
     });
-    this.fetchNews()
+    this.selectCategory()
   }
 
   isLoading() {
@@ -242,9 +248,9 @@ class NewsList extends React.Component {
       )
     } else {
       //console.log(this.state.news)
-      return (        
+      return (
         <FlatList
-          data={this.state.news}
+          data={data_news}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.url}
           refreshing={this.state.refreshing}
@@ -260,13 +266,13 @@ class NewsList extends React.Component {
         <StatusBar backgroundColor="#801336" barStyle="light-content" />
         <NavigationEvents
           onDidFocus={() => {
+            console.log('nav enents')
             this.setState({
               refreshing: true,
             });
-            this.forceUpdate()
-            this.fetchNews()
-
+            this.selectCategory()
           }}
+
         />
         {this.isLoading()}
       </SafeAreaView>
