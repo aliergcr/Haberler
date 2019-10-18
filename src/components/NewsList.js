@@ -4,6 +4,7 @@ import { NavigationEvents } from "react-navigation";
 import * as rssParser from 'react-native-rss-parser';
 import moment from 'moment';
 import 'moment/locale/tr';
+import LinearGradient from 'react-native-linear-gradient';
 
 import ListItems from '../components/ListItems'
 let data_news = [];
@@ -235,8 +236,7 @@ class NewsList extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <StatusBar backgroundColor="#801336" barStyle="light-content" />
+      <SafeAreaView >
         <NavigationEvents
           onDidFocus={() => {
             console.log('nav enents')
@@ -245,7 +245,6 @@ class NewsList extends React.Component {
             });
             this.selectCategory()
           }}
-
         />
         {this.isLoading()}
       </SafeAreaView>

@@ -1,30 +1,46 @@
 import React from 'react'
-import { View,  } from 'react-native';
+import { View, StyleSheet  } from 'react-native';
 import { List, ListItem, Thumbnail, Text, Left, Body, Right, Card } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import LinearGradient from 'react-native-linear-gradient';
 
 const ListItems = ({ item, navigation }) => {
   return (
-    <List>
-      <TouchableOpacity onPress={() => navigation.navigate("NewsWebView", {url:item.url})}>
+      <TouchableOpacity onPress={() => navigation.navigate("NewsWebView", {url:item.url, title:item.title})}>
+        
         <Card>
+        <LinearGradient 
+          start={{x: 0, y: 0}} 
+          end={{x: 1, y: 0}} 
+          colors={["#522157",'#C2649A']}>
           <ListItem thumbnail>
             <Left>
               <Thumbnail square source={{ uri: item.thumbnail }} />
             </Left>
-            <Body>
-              <Text numberOfLines={4}>{item.title}</Text>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text note >{item.author}</Text>
-                <Text note >{item.pubDate}</Text>
+            <Body style={{paddingBottom:5}}>
+              <Text numberOfLines={4} style={{color: 'white', fontWeight: 'bold'}}>{item.title}</Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
+                <Text note style={{color: 'white'}} >{item.author}</Text>
+                <Text note style={{color: 'white'}} >{item.pubDate}</Text>
               </View>
             </Body>
             <Right />
           </ListItem>
+          </LinearGradient>
         </Card>
       </TouchableOpacity>
-    </List>
   )
 }
+
+const styles = StyleSheet.create({
+  
+  linearGradient: {
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5,
+    marginTop:16,
+    width:350,
+  }
+})
 
 export default ListItems

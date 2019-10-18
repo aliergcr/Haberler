@@ -6,24 +6,24 @@ export default class DrawerContent extends Component {
 
     render() {
         return (
-            <Container >
-                <Header style={{ height: 150, backgroundColor: 'white' }}>
-                    <Body>
+            <Container>
+                <Header style={{ height: 150, backgroundColor: '#522160' }}>
+                    <Body style={{justifyContent: 'center', alignItems: 'center'}}>
                         <Image
                             style={styles.drawerImage}
                             source={require('../../../../assets/DrawerIcons/logo.png')}
                         />
                     </Body>
                 </Header>
+                <Header style={{ backgroundColor: '#534666' }}>
+                    <Body>
+                        <Title style={{ color: 'white' }} >Haber Kategorileri</Title>
+                    </Body>
+                </Header>
                 <Content>
-                    <Header style={{ backgroundColor: 'green' }}>
-                        <Body>
-                            <Title>Haber Kategorileri</Title>
-                        </Body>
-                    </Header>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} >
-                        <Card>
-                            <CardItem>
+                        <Card >
+                            <CardItem >
                                 <Body>
                                     <Text>
                                         Son Dakika
@@ -43,7 +43,7 @@ export default class DrawerContent extends Component {
                             </CardItem>
                         </Card>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Sport')} >
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Sports')} >
                         <Card>
                             <CardItem>
                                 <Body>
@@ -111,9 +111,9 @@ export default class DrawerContent extends Component {
                     </TouchableOpacity>
 
                 </Content>
-                <Footer style={{height: 25, backgroundColor: 'green', paddingLeft: 10}}>
+                <Footer style={{ height: 30, backgroundColor: '#534666', paddingLeft: 10 }}>
                     <Body>
-                        <Text style={{color: 'white'}}>
+                        <Text style={{ color: 'white' }}>
                             OrsaTramola Mobil APPS
                         </Text>
                     </Body>
@@ -127,7 +127,5 @@ const styles = StyleSheet.create({
     drawerImage: {
         height: 150,
         width: 150,
-        borderRadius: 75
-
     }
 })
