@@ -14,7 +14,7 @@ export default class NewsWebView extends Component {
     
     title: 'Haber İçeriği',
     headerStyle: {
-      backgroundColor: '#4b134f',
+      backgroundColor: '#0A5373',
     },
     headerTitleStyle: { color: "#fcf9ec", fontWeight: 'bold' },
     headerTintColor: '#fcf9ec'
@@ -23,10 +23,9 @@ export default class NewsWebView extends Component {
 
   render() {
     const { url, title } = this.props.navigation.state.params;
-    console.log(this.props.navigation.state.params.title)
     return (
       <Container>
-        <StatusBar backgroundColor="#4b134f" barStyle="light-content" />
+        <StatusBar backgroundColor="#0A5373" barStyle="light-content" />
         <WebView
           startInLoadingState={true}
           source={{ uri: url }}
