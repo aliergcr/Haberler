@@ -10,7 +10,7 @@ export default class DrawerContent extends Component {
     render() {
         return (
             <Container androidStatusBarColor="#0A5373" >
-                <Header androidStatusBarColor="#0A5373" style={{ height: 100, backgroundColor: '#0A5373' }}>
+                <Header androidStatusBarColor="#0A5373"  style={{ height: 100, backgroundColor: '#0A5373' }}>
                     <Body style={{justifyContent: 'center', alignItems: 'center'}}>
                         <Image
                             style={styles.drawerImage}
@@ -19,7 +19,7 @@ export default class DrawerContent extends Component {
                     </Body>
                 </Header>
                 <Header androidStatusBarColor="#0A5373" style={{ backgroundColor: '#303e57' }}>
-                    <Body>
+                    <Body style={{paddingLeft: 10 }}>
                         <Title style={{ color: '#ffffff' }} >Haber Kategorileri</Title>
                     </Body>
                 </Header>
@@ -114,10 +114,10 @@ export default class DrawerContent extends Component {
                     </TouchableOpacity>
 
                 </Content>
-                <Footer style={{ height: 30, backgroundColor: '#303e57', paddingLeft: 10 }}>
-                    <Body>
-                        <Text style={{ color: 'white' }}>
-                            OrsaTramola Mobil APPS
+                <Footer style={{ height: 30, backgroundColor: '#303e57' }}>
+                    <Body style={{paddingLeft:20}}>
+                        <Text style={{ fontSize: 12, color: 'white' }}>
+                            OrsaTramola Mobile APPS
                         </Text>
                     </Body>
                 </Footer>
