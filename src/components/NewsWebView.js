@@ -36,7 +36,7 @@ export default class NewsWebView extends Component {
                 height: '100%',
                 marginTop: 20
               }}>
-                <ActivityIndicator size="large" color='#5edfff' />
+                <ActivityIndicator size="large" color='#0A5373' />
               </View>
             )
           }}

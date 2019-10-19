@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { Container, Header, Content, Body, Card, CardItem, Text, Left, Right, Title, Footer } from 'native-base';
 
 export default class DrawerContent extends Component {
+    componentDidMount(){
+        StatusBar.setBackgroundColor('#0A5373')
+      }
 
     render() {
         return (
-            <Container>
-                <Header style={{ height: 100, backgroundColor: '#0A5373' }}>
+            <Container androidStatusBarColor="#0A5373" >
+                <Header androidStatusBarColor="#0A5373" style={{ height: 100, backgroundColor: '#0A5373' }}>
                     <Body style={{justifyContent: 'center', alignItems: 'center'}}>
                         <Image
                             style={styles.drawerImage}
@@ -15,7 +18,7 @@ export default class DrawerContent extends Component {
                         />
                     </Body>
                 </Header>
-                <Header style={{ backgroundColor: '#303e57' }}>
+                <Header androidStatusBarColor="#0A5373" style={{ backgroundColor: '#303e57' }}>
                     <Body>
                         <Title style={{ color: '#ffffff' }} >Haber Kategorileri</Title>
                     </Body>

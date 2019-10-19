@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, StatusBar, SafeAreaView } from 'react-native';
+import { TouchableOpacity, StatusBar } from 'react-native';
 import { Icon } from 'native-base';
 
 import NewsList from '../NewsList'
 
 export default class Art extends Component {
+  componentDidMount(){
+    StatusBar.setBackgroundColor('#0A5373')
+  }
+
   static navigationOptions = ({ navigation }) => {
 
     return {
@@ -22,10 +26,7 @@ export default class Art extends Component {
   }
   render() {
     return (
-      <SafeAreaView>
-        <StatusBar backgroundColor="#0A5373" barStyle="light-content" />
         <NewsList category='Kültür-Sanat' navigation={this.props.navigation} />
-      </SafeAreaView>
     );
   }
 }

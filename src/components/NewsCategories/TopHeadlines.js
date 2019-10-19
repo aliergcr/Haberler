@@ -5,6 +5,10 @@ import { Icon } from 'native-base';
 import NewsList from '../NewsList'
 
 export default class TopHeadlines extends Component {
+  componentDidMount(){
+    StatusBar.setBackgroundColor('#0A5373')
+  }
+
   static navigationOptions = ({ navigation }) => {
     return {
       headerLeft: (
@@ -21,10 +25,7 @@ export default class TopHeadlines extends Component {
   }
   render() {
     return (
-      <SafeAreaView>
-        <StatusBar backgroundColor="#0A5373" barStyle="light-content" />
         <NewsList category='Son Dakika' navigation={this.props.navigation} />
-      </SafeAreaView>
     );
   }
 }
