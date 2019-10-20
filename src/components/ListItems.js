@@ -1,13 +1,11 @@
 import React from 'react'
-import { View, StyleSheet  } from 'react-native';
-import { List, ListItem, Thumbnail, Text, Left, Body, Right, Card } from 'native-base';
+import { View } from 'react-native';
+import { ListItem, Thumbnail, Text, Left, Body, Right, Card } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import LinearGradient from 'react-native-linear-gradient';
 
 const ListItems = ({ item, navigation }) => {
   return (
       <TouchableOpacity onPress={() => navigation.navigate("NewsWebView", {url:item.url, title:item.title})}>
-        
         <Card > 
           <ListItem thumbnail>
             <Left>
@@ -26,7 +24,5 @@ const ListItems = ({ item, navigation }) => {
       </TouchableOpacity>
   )
 }
-
-
 
 export default ListItems
