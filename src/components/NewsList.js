@@ -216,20 +216,6 @@ class NewsList extends React.Component {
     this.selectCategory()
   }
 
-  sortData(a,b) {
-    console.log(a)
-    const A = a.pubDate;
-    const B = b.pubDate;
-
-    let comparison = 0;
-    if (A < B) {
-      comparison = 1;
-    } else if (A > B) {
-      comparison = -1;
-    }
-    return comparison;
-  }
-
   isLoading() {
     if (this.state.refreshing) {
       return (
