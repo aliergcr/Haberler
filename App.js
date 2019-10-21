@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { HomeDrawer } from './src/components/navigation/Navigators'
 import HomePage from './src/components/HomePage'
 
@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount(){
     StatusBar.setBackgroundColor('#0A5373')
-    setTimeout(()=>{this.setState({visible:false})}, 3000)
+    setTimeout(()=>{this.setState({visible:false})}, 2000)
   }
 
   isLoading(){

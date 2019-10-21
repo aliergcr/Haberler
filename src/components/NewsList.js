@@ -158,9 +158,10 @@ class NewsList extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     StatusBar.setBackgroundColor('#0A5373')
   }
+
   selectCategory() {
     data_news = [];
     const link_list = links.filter((item) => (item.category == this.props.category))
@@ -180,7 +181,7 @@ class NewsList extends React.Component {
       .then(async (rss) => {
         this.setNewsToState(rss, data)
       })
-      .catch((err) => console.log('err------------->', err))
+      .catch((err) => console.log('err------------->', data.link))
   }
 
   setNewsToState(rss, data) {
@@ -189,17 +190,18 @@ class NewsList extends React.Component {
         let state_data = {
           "title": item.title,
           "url": item.links[0].url,
-          "pubDate": moment(item.published || moment.now()).fromNow(),
+          "pubDate": (item.published==null||data.category == 'Magazin' || data.category == 'Teknoloji' || data.category == 'Otomobil' || data.category == 'Sağlık' || data.category == 'Kültür-Sanat'||data.author=='Fotomaç') ? '' : moment(item.published || moment.now()).format('LT'),
           "thumbnail": item.enclosures[0].url == undefined ? null : item.enclosures[0].url,
           "author": data.author,
           "category": data.category
         }
         data_news = [...data_news, state_data]
+        data_news.sort((a,b) => (a.pubDate > b.pubDate) ? -1 : ((b.pubDate > a.pubDate) ? 1 : 0))
       }
     })
     this.setState({ refreshing: false });
-
   }
+
   renderItem = ({ item }) => {
     const { navigation } = this.props;
     return (
@@ -212,6 +214,20 @@ class NewsList extends React.Component {
       refreshing: true,
     });
     this.selectCategory()
+  }
+
+  sortData(a,b) {
+    console.log(a)
+    const A = a.pubDate;
+    const B = b.pubDate;
+
+    let comparison = 0;
+    if (A < B) {
+      comparison = 1;
+    } else if (A > B) {
+      comparison = -1;
+    }
+    return comparison;
   }
 
   isLoading() {
@@ -240,7 +256,7 @@ class NewsList extends React.Component {
     return (
       <SafeAreaView >
         <NavigationEvents
-          onDidFocus={() => {
+          onWillFocus={() => {
             this.setState({
               refreshing: true,
             });

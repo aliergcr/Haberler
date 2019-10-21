@@ -11,14 +11,12 @@ export default class NewsWebView extends Component {
     };
   }
   static navigationOptions =  {
-    
     title: 'Haber İçeriği',
     headerStyle: {
       backgroundColor: '#0A5373',
     },
     headerTitleStyle: { color: "#fcf9ec", fontWeight: 'bold' },
     headerTintColor: '#fcf9ec'
-
   }
 
   render() {
@@ -55,7 +53,6 @@ export default class NewsWebView extends Component {
               }).then(result => console.log(result)).catch(errorMsg => console.log(errorMsg));
           }}>
           <Icon name="share" />
-
         </Fab>
       </Container>
     );
