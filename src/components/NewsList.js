@@ -159,33 +159,33 @@ class NewsList extends React.Component {
   }
 
   componentDidMount() {
-    StatusBar.setBackgroundColor('#0A5373')
+    StatusBar.setBackgroundColor('#0A5373');
   }
 
-  selectCategory() {
+  async selectCategory() {
     data_news = [];
     const link_list = links.filter((item) => (item.category == this.props.category))
-    this.fetchNews(link_list)
+    await this.fetchNews(link_list)
   }
 
   async fetchNews(link_list) {
-    link_list.map((data) => {
-      this.fetchData(data)
+    await link_list.map(async (data) => {
+      await this.fetchData(data)
     })
   }
 
-  fetchData(data) {
-    fetch(data.link)
+  async fetchData(data) {
+    await fetch(data.link)
       .then((response) => response.text())
       .then((responseData) => rssParser.parse(responseData))
       .then(async (rss) => {
-        this.setNewsToState(rss, data)
+        await this.setNewsToState(rss, data)
       })
       .catch((err) => console.log('err------------->', data.link))
   }
 
-  setNewsToState(rss, data) {
-    rss.items.map((item, index) => {
+  async setNewsToState(rss, data) {
+    await rss.items.map((item, index) => {
       if (index < 10) {
         let state_data = {
           "title": item.title,
@@ -199,7 +199,6 @@ class NewsList extends React.Component {
         data_news.sort((a,b) => (a.pubDate > b.pubDate) ? -1 : ((b.pubDate > a.pubDate) ? 1 : 0))
       }
     })
-    this.setState({ refreshing: false });
   }
 
   renderItem = ({ item }) => {
@@ -247,6 +246,7 @@ class NewsList extends React.Component {
               refreshing: true,
             });
             this.selectCategory()
+            setTimeout(()=>{this.setState({refreshing:false})}, 800)
           }}
         />
         {this.isLoading()}
