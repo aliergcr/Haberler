@@ -164,6 +164,7 @@ class NewsList extends React.Component {
 
   async selectCategory() {
     data_news = [];
+    setTimeout(()=>{this.setState({refreshing:false})}, 800)
     const link_list = links.filter((item) => (item.category == this.props.category))
     await this.fetchNews(link_list)
   }
@@ -213,7 +214,6 @@ class NewsList extends React.Component {
       refreshing: true,
     });
     this.selectCategory()
-    setTimeout(()=>{this.setState({refreshing:false})}, 800)
   }
 
   isLoading() {
@@ -247,7 +247,6 @@ class NewsList extends React.Component {
               refreshing: true,
             });
             this.selectCategory()
-            setTimeout(()=>{this.setState({refreshing:false})}, 800)
           }}
         />
         {this.isLoading()}
