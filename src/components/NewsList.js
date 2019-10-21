@@ -213,6 +213,7 @@ class NewsList extends React.Component {
       refreshing: true,
     });
     this.selectCategory()
+    setTimeout(()=>{this.setState({refreshing:false})}, 800)
   }
 
   isLoading() {
