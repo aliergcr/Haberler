@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import { TouchableOpacity, StatusBar } from 'react-native';
 import { Icon } from 'native-base';
+
 
 import NewsList from '../NewsList'
 

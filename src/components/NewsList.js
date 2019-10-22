@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'moment/locale/tr';
 
 import ListItems from '../components/ListItems'
+
 let data_news = [];
 const links = [
   {
@@ -14,7 +15,7 @@ const links = [
     "author": "TRT"
   },
   {
-    "link": "https://www.haberturk.com/rss/manset.xml",
+    "link": "https://www.haberturk.com/rss/kategori/gundem.xml",
     "category": "Son Dakika",
     "author": "Habertürk"
   },
@@ -155,16 +156,18 @@ class NewsList extends React.Component {
     super(props);
     this.state = {
       refreshing: true,
+      reload: true
     }
   }
 
   componentDidMount() {
     StatusBar.setBackgroundColor('#0A5373');
+    this.setState({reload:true})
   }
 
   async selectCategory() {
     data_news = [];
-    setTimeout(()=>{this.setState({refreshing:false})}, 800)
+    setTimeout(()=>{this.setState({refreshing:false, reload:false})}, 800)
     const link_list = links.filter((item) => (item.category == this.props.category))
     await this.fetchNews(link_list)
   }
@@ -205,7 +208,7 @@ class NewsList extends React.Component {
   renderItem = ({ item }) => {
     const { navigation } = this.props;
     return (
-      <ListItems navigation={navigation} item={item} />
+      <ListItems navigation={navigation} item={item}/>
     )
   }
 
@@ -243,10 +246,12 @@ class NewsList extends React.Component {
       <SafeAreaView >
         <NavigationEvents
           onWillFocus={() => {
-            this.setState({
-              refreshing: true,
-            });
-            this.selectCategory()
+            if(this.state.reload){
+              this.setState({
+                refreshing: true,
+              });
+              this.selectCategory()
+            }
           }}
         />
         {this.isLoading()}

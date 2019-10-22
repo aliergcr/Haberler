@@ -1,27 +1,38 @@
 import React from 'react'
-import { View } from 'react-native';
-import { ListItem, Thumbnail, Text, Left, Body, Right, Card } from 'native-base';
+import { Image } from 'react-native';
+import { Card, CardItem, Text, Icon, Left, Body, Right } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ListItems = ({ item, navigation }) => {
   return (
-      <TouchableOpacity onPress={() => navigation.navigate("NewsWebView", {url:item.url, title:item.title})}>
-        <Card > 
-          <ListItem thumbnail>
-            <Left>
-              <Thumbnail square source={{ uri: item.thumbnail }} />
-            </Left>
-            <Body style={{paddingBottom:5}}>
-              <Text numberOfLines={4} style={{fontWeight: 'bold'}}>{item.title}</Text>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
-                <Text note  >{item.author}</Text>
-                <Text note  >{item.pubDate}</Text>
-              </View>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("NewsWebView", { url: item.url, title: item.title })
+      }}
+    >
+      <Card >
+        <CardItem cardBody>
+          <Image source={{ uri: item.thumbnail }} style={{ height: 200, width: null, flex:1 }} />
+        </CardItem>
+        <CardItem style={{ backgroundColor: 'rgba(57, 89, 101, 0.1)' }}>
+          <Left>
+            <Body>
+              <Text  numberOfLines={3} style={{ fontWeight: 'bold' }}>{item.title}</Text>
             </Body>
-            <Right />
-          </ListItem>
-        </Card>
-      </TouchableOpacity>
+          </Left>
+        </CardItem>
+        <CardItem  >
+          <Left>
+            <Icon style={{fontSize:18 }} name="paper" />
+            <Text note style={{fontSize:16}}>{item.author}</Text>  
+          </Left>
+          <Right style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+            <Icon name= {item.pubDate!== '' ? 'time' : null}  />
+            <Text note style={{ marginLeft: 5, fontSize: 14, }} >{item.pubDate}</Text>
+          </Right>
+        </CardItem>
+      </Card>
+    </TouchableOpacity>
   )
 }
 
