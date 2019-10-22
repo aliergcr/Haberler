@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount(){
     StatusBar.setBackgroundColor('#0A5373')
-    setTimeout(()=>{this.setState({visible:false})}, 1000)
+    setTimeout(()=>{this.setState({visible:false})}, 800)
   }
 
   isLoading(){

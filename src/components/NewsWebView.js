@@ -20,7 +20,7 @@ export default class NewsWebView extends Component {
   }
 
   render() {
-    const { url, title } = this.props.navigation.state.params;
+    const { url } = this.props.navigation.state.params;
     return (
       <Container>
         <StatusBar backgroundColor="#0A5373" barStyle="light-content" />
