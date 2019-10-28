@@ -30,12 +30,7 @@ const datas = [
     {
         name: "Otomobil Haberleri",
         route: "Cars",
-    },
-    {
-        name: "Sağlık Haberleri",
-        route: "Health",
-    },
-
+    }
 ]
 export default class DrawerContent extends Component {
 

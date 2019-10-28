@@ -1,8 +1,9 @@
 import React from 'react'
-import { Image } from 'react-native';
-import { Card, CardItem, Text, Icon, Left, Body, Right } from 'native-base';
+import { Image, Dimensions, View } from 'react-native';
+import { List, ListItem, Text, Icon, Left, Body, Right, Thumbnail, Card } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+const { height, width } = Dimensions.get('window');
 const ListItems = ({ item, navigation }) => {
   return (
     <TouchableOpacity
@@ -10,27 +11,28 @@ const ListItems = ({ item, navigation }) => {
         navigation.navigate("NewsWebView", { url: item.url, title: item.title })
       }}
     >
-      <Card >
-        <CardItem cardBody>
-          <Image source={{ uri: item.thumbnail }} style={{ height: 200, width: null, flex:1 }} />
-        </CardItem>
-        <CardItem style={{ backgroundColor: 'rgba(57, 89, 101, 0.1)' }}>
+      <Card>
+      <List >
+        <ListItem thumbnail>
           <Left>
-            <Body>
-              <Text  numberOfLines={3} style={{ fontWeight: 'bold' }}>{item.title}</Text>
-            </Body>
+            <Thumbnail square source={{ uri: item.thumbnail }} />
           </Left>
-        </CardItem>
-        <CardItem  >
-          <Left>
-            <Icon style={{fontSize:18 }} name="paper" />
-            <Text note style={{fontSize:16}}>{item.author}</Text>  
-          </Left>
-          <Right style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-            <Icon name= {item.pubDate!== '' ? 'time' : null}  />
-            <Text note style={{ marginLeft: 5, fontSize: 14, }} >{item.pubDate}</Text>
-          </Right>
-        </CardItem>
+          <Body>
+            <Text numberOfLines={2} style={{fontWeight: 'bold'}} >{item.title}</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop:5 }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Icon style={{ fontSize: 16, opacity: 0.5 }} name='paper' note />
+                <Text note style={{ paddingLeft: 5 }}>{item.author}</Text>
+              </View>
+              <View style={{ flexDirection: 'row' }}>
+                {item.pubDate!='' ? (<Icon style={{ fontSize: 16, opacity: 0.5 }} name='time' note />) : null}
+                <Text note style={{ paddingLeft:5}}>{item.pubDate}</Text>
+              </View>
+            </View>
+          </Body>
+
+        </ListItem>
+      </List>
       </Card>
     </TouchableOpacity>
   )

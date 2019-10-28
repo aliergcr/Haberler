@@ -125,26 +125,6 @@ const links = [
     "author": "T24"
   },
   {
-    "link": "https://www.haberturk.com/rss/kategori/saglik.xml",
-    "category": "Sağlık",
-    "author": "Habertürk"
-  },
-  {
-    "link": "http://www.trt.net.tr/rss/saglik.rss",
-    "category": "Sağlık",
-    "author": "TRT"
-  },
-  {
-    "link": "https://t24.com.tr/rss/haber/saglik",
-    "category": "Sağlık",
-    "author": "T24"
-  },
-  {
-    "link": "http://www.hurriyet.com.tr/rss/saglik",
-    "category": "Sağlık",
-    "author": "Hürriyet"
-  },
-  {
     "link": "https://www.haberturk.com/rss/kategori/otomobil.xml",
     "category": "Otomobil",
     "author": "Habertürk"
@@ -167,9 +147,10 @@ class NewsList extends React.Component {
 
   async selectCategory() {
     data_news = [];
-    setTimeout(()=>{this.setState({refreshing:false, reload:false})}, 800)
+    setTimeout(()=>{this.setState({refreshing:false, reload:false})}, 1000)
     const link_list = links.filter((item) => (item.category == this.props.category))
     await this.fetchNews(link_list)
+    
   }
 
   async fetchNews(link_list) {
@@ -243,7 +224,7 @@ class NewsList extends React.Component {
 
   render() {
     return (
-      <SafeAreaView >
+      <SafeAreaView style={{backgroundColor: '#e9eef0'}} >
         <NavigationEvents
           onWillFocus={() => {
             if(this.state.reload){

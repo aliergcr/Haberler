@@ -10,7 +10,6 @@ import Technology from '../NewsCategories/Technology'
 import Magazine from '../NewsCategories/Magazine'
 import Sports from '../NewsCategories/Sports'
 import Cars from '../NewsCategories/Cars'
-import Health from '../NewsCategories/Health'
 import Art from '../NewsCategories/Art'
 
 export const WorldStackNavigator = createStackNavigator(
@@ -83,18 +82,6 @@ export const CarsStackNavigator = createStackNavigator(
     }
 )
 
-export const HealthStackNavigator = createStackNavigator(
-    {
-        Health: {screen: Health},
-        NewsWebView: { screen: NewsWebView }
-    },
-    {
-        initialRouteName: 'Health',
-    }
-)
-
-
-
 export const DrawerNavigator = createDrawerNavigator({
     Home: {
         screen: TopHeadlinesStackNavigator,
@@ -137,19 +124,13 @@ export const DrawerNavigator = createDrawerNavigator({
         navigationOptions: {
                 drawerLabel: 'Otomobil'
         }
-    },
-    Health: {
-        screen: HealthStackNavigator,
-        navigationOptions: {
-                drawerLabel: 'Sağlık'
-        }
     }
+    
 },
     {
         initialRouteName: 'Home',
         contentComponent: DrawerContent,
         drawerPosition: 'left',
-        drawerWidth: '60%',
         drawerOpenRoute: 'DrawerOpen',
         drawerCloseRoute: 'DrawerClose',
         drawerToggleRoute: 'DrawerToggle'

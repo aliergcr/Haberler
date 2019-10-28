@@ -34,6 +34,20 @@
 		FC4723A3C6BF43B4ADC0650E /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 456FBC98CB9746808CE6D018 /* rubicon-icon-font.ttf */; };
 		9A038E02BC2F4D17828D678B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61537578C02E41FC91984255 /* SimpleLineIcons.ttf */; };
 		BC54F965FE13495FAC3E07A8 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B1E9B041340188E04F97D /* Zocial.ttf */; };
+		FC50754BF0684EA29E62854D /* HelveticaNeue-Condensed Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85C0C32D1FD34DC48D9D9301 /* HelveticaNeue-Condensed Bold.ttf */; };
+		4A21510D92284BDA803FE746 /* HelveticaNeue-Condensed Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266C3DE49F3E48F99B146C0B /* HelveticaNeue-Condensed Thin.ttf */; };
+		B53414DCC7944913A347DDEF /* HelveticaNeue-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C22F449FFABA412992463C18 /* HelveticaNeue-Condensed.ttf */; };
+		F6480B60032D4665A9FB49FF /* AlexBrush-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5E46812A7974AB883626524 /* AlexBrush-Regular.ttf */; };
+		2DA48680DA914491848E1C02 /* Amandita Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3982ECE35914CD09B831333 /* Amandita Personal Use.ttf */; };
+		D3C27FEED7574AE0AA785E76 /* BebasNeue Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D02F032A1D842F1B90021D0 /* BebasNeue Bold.otf */; };
+		3E66FB7325524D228C7DF0E6 /* BebasNeue Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F45F8A3059FF4284A75CEE22 /* BebasNeue Bold.ttf */; };
+		77524AE786714F4CA1ECC11B /* BebasNeue Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 711FB768A02C47D3BEA698F6 /* BebasNeue Book.otf */; };
+		535108B760444C7285D289A6 /* BebasNeue Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD15121BBD9E4F02BD545173 /* BebasNeue Book.ttf */; };
+		A7EEC518C2E24C07A093BA2C /* BebasNeue Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66FFCF4867A54571A81F1AD2 /* BebasNeue Light.otf */; };
+		1B12680EE4784CAFB802D698 /* BebasNeue Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1323B597E19244A2AB090E00 /* BebasNeue Light.ttf */; };
+		649874F3FBB143F09CF8DD68 /* BebasNeue Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1403735BD42E7B6FBF7FD /* BebasNeue Regular.otf */; };
+		1CD869D8708E42DFB2D8DF9A /* BebasNeue Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85415E4CB860482392EB9E13 /* BebasNeue Thin.otf */; };
+		AF47885A311649A6A37AFB28 /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = CC4663776A52426D911C8965 /* BebasNeue.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +102,20 @@
 		456FBC98CB9746808CE6D018 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		61537578C02E41FC91984255 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		5A4B1E9B041340188E04F97D /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		85C0C32D1FD34DC48D9D9301 /* HelveticaNeue-Condensed Bold.ttf */ = {isa = PBXFileReference; name = "HelveticaNeue-Condensed Bold.ttf"; path = "../assets/Fonts/HelveticaNeue-Condensed Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		266C3DE49F3E48F99B146C0B /* HelveticaNeue-Condensed Thin.ttf */ = {isa = PBXFileReference; name = "HelveticaNeue-Condensed Thin.ttf"; path = "../assets/Fonts/HelveticaNeue-Condensed Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C22F449FFABA412992463C18 /* HelveticaNeue-Condensed.ttf */ = {isa = PBXFileReference; name = "HelveticaNeue-Condensed.ttf"; path = "../assets/Fonts/HelveticaNeue-Condensed.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D5E46812A7974AB883626524 /* AlexBrush-Regular.ttf */ = {isa = PBXFileReference; name = "AlexBrush-Regular.ttf"; path = "../assets/Fonts/AlexBrush-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C3982ECE35914CD09B831333 /* Amandita Personal Use.ttf */ = {isa = PBXFileReference; name = "Amandita Personal Use.ttf"; path = "../assets/Fonts/Amandita Personal Use.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1D02F032A1D842F1B90021D0 /* BebasNeue Bold.otf */ = {isa = PBXFileReference; name = "BebasNeue Bold.otf"; path = "../assets/Fonts/BebasNeue Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F45F8A3059FF4284A75CEE22 /* BebasNeue Bold.ttf */ = {isa = PBXFileReference; name = "BebasNeue Bold.ttf"; path = "../assets/Fonts/BebasNeue Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		711FB768A02C47D3BEA698F6 /* BebasNeue Book.otf */ = {isa = PBXFileReference; name = "BebasNeue Book.otf"; path = "../assets/Fonts/BebasNeue Book.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD15121BBD9E4F02BD545173 /* BebasNeue Book.ttf */ = {isa = PBXFileReference; name = "BebasNeue Book.ttf"; path = "../assets/Fonts/BebasNeue Book.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		66FFCF4867A54571A81F1AD2 /* BebasNeue Light.otf */ = {isa = PBXFileReference; name = "BebasNeue Light.otf"; path = "../assets/Fonts/BebasNeue Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1323B597E19244A2AB090E00 /* BebasNeue Light.ttf */ = {isa = PBXFileReference; name = "BebasNeue Light.ttf"; path = "../assets/Fonts/BebasNeue Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		95D1403735BD42E7B6FBF7FD /* BebasNeue Regular.otf */ = {isa = PBXFileReference; name = "BebasNeue Regular.otf"; path = "../assets/Fonts/BebasNeue Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		85415E4CB860482392EB9E13 /* BebasNeue Thin.otf */ = {isa = PBXFileReference; name = "BebasNeue Thin.otf"; path = "../assets/Fonts/BebasNeue Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CC4663776A52426D911C8965 /* BebasNeue.otf */ = {isa = PBXFileReference; name = "BebasNeue.otf"; path = "../assets/Fonts/BebasNeue.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +245,20 @@
 				456FBC98CB9746808CE6D018 /* rubicon-icon-font.ttf */,
 				61537578C02E41FC91984255 /* SimpleLineIcons.ttf */,
 				5A4B1E9B041340188E04F97D /* Zocial.ttf */,
+				85C0C32D1FD34DC48D9D9301 /* HelveticaNeue-Condensed Bold.ttf */,
+				266C3DE49F3E48F99B146C0B /* HelveticaNeue-Condensed Thin.ttf */,
+				C22F449FFABA412992463C18 /* HelveticaNeue-Condensed.ttf */,
+				D5E46812A7974AB883626524 /* AlexBrush-Regular.ttf */,
+				C3982ECE35914CD09B831333 /* Amandita Personal Use.ttf */,
+				1D02F032A1D842F1B90021D0 /* BebasNeue Bold.otf */,
+				F45F8A3059FF4284A75CEE22 /* BebasNeue Bold.ttf */,
+				711FB768A02C47D3BEA698F6 /* BebasNeue Book.otf */,
+				DD15121BBD9E4F02BD545173 /* BebasNeue Book.ttf */,
+				66FFCF4867A54571A81F1AD2 /* BebasNeue Light.otf */,
+				1323B597E19244A2AB090E00 /* BebasNeue Light.ttf */,
+				95D1403735BD42E7B6FBF7FD /* BebasNeue Regular.otf */,
+				85415E4CB860482392EB9E13 /* BebasNeue Thin.otf */,
+				CC4663776A52426D911C8965 /* BebasNeue.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -377,6 +419,20 @@
 				FC4723A3C6BF43B4ADC0650E /* rubicon-icon-font.ttf in Resources */,
 				9A038E02BC2F4D17828D678B /* SimpleLineIcons.ttf in Resources */,
 				BC54F965FE13495FAC3E07A8 /* Zocial.ttf in Resources */,
+				FC50754BF0684EA29E62854D /* HelveticaNeue-Condensed Bold.ttf in Resources */,
+				4A21510D92284BDA803FE746 /* HelveticaNeue-Condensed Thin.ttf in Resources */,
+				B53414DCC7944913A347DDEF /* HelveticaNeue-Condensed.ttf in Resources */,
+				F6480B60032D4665A9FB49FF /* AlexBrush-Regular.ttf in Resources */,
+				2DA48680DA914491848E1C02 /* Amandita Personal Use.ttf in Resources */,
+				D3C27FEED7574AE0AA785E76 /* BebasNeue Bold.otf in Resources */,
+				3E66FB7325524D228C7DF0E6 /* BebasNeue Bold.ttf in Resources */,
+				77524AE786714F4CA1ECC11B /* BebasNeue Book.otf in Resources */,
+				535108B760444C7285D289A6 /* BebasNeue Book.ttf in Resources */,
+				A7EEC518C2E24C07A093BA2C /* BebasNeue Light.otf in Resources */,
+				1B12680EE4784CAFB802D698 /* BebasNeue Light.ttf in Resources */,
+				649874F3FBB143F09CF8DD68 /* BebasNeue Regular.otf in Resources */,
+				1CD869D8708E42DFB2D8DF9A /* BebasNeue Thin.otf in Resources */,
+				AF47885A311649A6A37AFB28 /* BebasNeue.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
